@@ -42,7 +42,7 @@ public class ShopingMallDAO {
 		Connection conn = open();
 		
 		List<ShopingMall> ShopingList = new ArrayList<>();
-		String sql = "SELECT aid, name, title, img, FORMATDATETIME(date, 'yyyy-MM-dd hh:mm:ss') as cdate, content "
+		String sql = "SELECT aid, name, title, img, DATE_FORMAT(date, '%Y-%m-%d %H:%i:%s') as cdate, content "
 				+ "FROM shopingmall "
 				+ "ORDER BY date DESC "
 				+ "LIMIT ? OFFSET ?"; // 게시글 목록 셀렉트 쿼리 문
@@ -118,7 +118,7 @@ public class ShopingMallDAO {
 		Connection conn = open();
 		ShopingMall s = new ShopingMall();
 		
-		String sql = "select aid, name, title, img, FORMATDATETIME(date, 'yyyy-MM-dd hh:mm:ss') as cdate,";
+		String sql = "select aid, name, title, img, DATE_FORMAT(date, '%Y-%m-%d %H:%i:%s') as cdate,";
 		sql += " content from shopingmall where aid = ?"; // 게시글 세부 내용 셀렉트 쿼리 문
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -164,7 +164,7 @@ public class ShopingMallDAO {
 	public void addProduct(ShopingMallProduct p) throws Exception {
 		Connection conn = open();
 
-		String sql = "insert into SHOPINGPRODUCT(name, img, category, content, link) values(?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO shopingproduct(name, img, category, content, link) VALUES(?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		try(conn; pstmt) {
 			pstmt.setString(1, p.getName());
