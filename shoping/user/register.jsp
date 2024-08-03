@@ -19,6 +19,57 @@
   	ul {
   		list-style: none;
   	}
+
+    /* 기본 폼 스타일 */
+    .form-control {
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+      border-color: #007bff;
+    }
+
+    .btn {
+      border-radius: 0.5rem;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    .btn-primary:focus, .btn-primary.focus {
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.5);
+    }
+
+    /* 추가 스타일 */
+    .container {
+      max-width: 600px;
+    }
+
+    h2 {
+      color: #333;
+      font-weight: 600;
+    }
+
+    .mb-3 {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-text {
+      font-size: 0.875rem;
+    }
+
+    small {
+      font-size: 0.875rem;
+    }
   </style>
 </head>
 
@@ -121,21 +172,28 @@
     </div>
   </nav>
   <div class="container mt-5">
-    <h2>회원가입</h2>
+    <h2 class="text-center mb-4">회원가입</h2>
     <form action="/shopingmall/register" method="post">
       <div class="mb-3">
         <label for="username" class="form-label">사용자 이름</label>
-        <input type="text" class="form-control" id="username" name="username" required>
+        <input type="text" class="form-control form-control-lg" id="username" name="username" required>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">비밀번호</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+        <input type="password" class="form-control form-control-lg" id="password" name="password" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">이메일</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" class="form-control form-control-lg" id="email" name="email" required>
       </div>
-      <button type="submit" class="btn btn-primary">가입하기</button>
+      <div class="mb-3">
+        <label for="inputPassword6" class="col-form-label">비밀번호 (확인용)</label>
+        <input type="password" id="inputPassword6" class="form-control form-control-lg" aria-describedby="passwordHelpInline">
+        <small id="passwordHelpInline" class="form-text text-muted">
+          비밀번호는 8-20자 이내로 설정해주세요.
+        </small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg w-100">가입하기</button>
     </form>
   </div>
   <footer>
@@ -145,5 +203,6 @@
       <li>COPYRIGHT (C) 코스모 ALL RIGHTS RESERVED</li>
     </ul>       
 </footer>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
