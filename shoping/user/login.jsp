@@ -10,11 +10,100 @@
   <title>로그인</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" type="text/css" href="/css/common.css">
   <link rel="stylesheet" type="text/css" href="/css/footer.css">
   <link rel="stylesheet" type="text/css" href="/css/board_left.css">
   <link rel="stylesheet" type="text/css" href="/css/board_list_main.css">
+  <style>
+    /* 전체 배경 설정 */
+    body {
+      background-color: #f8f9fa; /* 연한 회색 배경 */
+      margin: 0;
+    }
+
+    /* 네비게이션 바 스타일 */
+    .navbar {
+      margin-bottom: 1rem;
+    }
+
+    /* 로그인 컨테이너 스타일 */
+    .login-container {
+      background-color: #ffffff; /* 흰색 배경 */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+      max-width: 420px;
+      width: 100%;
+      margin: 2rem auto;
+    }
+
+    /* 제목 스타일 */
+    .login-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    /* 레이블 및 입력 필드 스타일 */
+    .form-label {
+      font-weight: 500;
+    }
+
+    .form-control {
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+    }
+
+    /* 버튼 스타일 */
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      border-radius: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    .btn-primary:focus, .btn-primary.focus {
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.5);
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+      border-color: #545b62;
+    }
+
+    .btn-secondary:focus, .btn-secondary.focus {
+      box-shadow: 0 0 0 0.2rem rgba(108,117,125,0.5);
+    }
+
+    /* 폼 마진 설정 */
+    .mb-3 {
+      margin-bottom: 1.5rem;
+    }
+
+
+  </style>
+
 </head>
 
 <body>
@@ -91,33 +180,40 @@
 
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="submit">검색</button>
         </form>
       </div>
     </div>
   </nav>
 
 
-  <h1 class="login-title">로그인</h1>
-  <form method="post" action="<c:url value='/shopingmall/main/login'/>">
-    <label for="username">사용자 이름</label>
-    <input id="username" type="text" size="20" name="username">
-    <label for="password">비밀번호</label>
-    <input id="password" type="password" name="password">
-    <button type="submit">로그인</button>
-  </form>
-  <c:if test="${not empty error}">
-    <p style="color:red;">${error}</p>
-  </c:if>
-  <a href="register" style="text-decoration: none"><button id="reg" >회원 가입</button></a>
+  <div class="login-container">
+    <h1 class="login-title">로그인</h1>
+    <form method="post" action="<c:url value='/shopingmall/main/login'/>">
+      <div class="mb-3">
+        <label for="username" class="form-label">사용자 이름</label>
+        <input id="username" type="text" class="form-control" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">비밀번호</label>
+        <input id="password" type="password" class="form-control" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">로그인</button>
+    </form>
+    <c:if test="${not empty error}">
+      <p class="text-danger">${error}</p>
+    </c:if>
+    <a href="register" class="btn btn-secondary mt-3">회원 가입</a>
+  </div>
 
 
   <footer>
-    <ul id="address">
-      <li>서울특별시 금천구 가산디지털2로 101 (가산동) 한라원앤원타워 B동 3층</li>  
+    <ul id="address" class="list-unstyled">
+      <li>서울특별시 금천구 가산디지털2로 101 (가산동) 한라원앤원타워 B동 3층</li>
       <li>TEL : 031-123-1234  Email : email@domain.com</li>
       <li>COPYRIGHT (C) 코스모 ALL RIGHTS RESERVED</li>
-    </ul>       
-</footer>
+    </ul>
+  </footer>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
